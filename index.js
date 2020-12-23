@@ -42,9 +42,13 @@ client.on('message', message => {
     else if (command === 'pegar') 
     {
         const currentBag = botData[message.guild.id];
-        const randomIndex = Math.floor(Math.random() * currentBag.length); 
-        const selected = currentBag[randomIndex];
-        currentBag.splice(randomIndex, 1);
+        var selected = '';
+        for (j = 0; j < 4; j++) {
+            const randomIndex = Math.floor(Math.random() * currentBag.length); 
+            selected += currentBag[randomIndex];
+            currentBag.splice(randomIndex, 1);
+        }
+       
         message.channel.send(selected);
     }
     else if (command === 'reiniciar') 
