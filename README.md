@@ -14,6 +14,9 @@ Caso queira fazer um fork e criar algo totalmente seu fique a vontade também!
 *Comandos*
 
 $help - Uma ajudinha com os comandinhos e a legenda dos ícones
+
 $pegar - pega 4 marcadores de dentro da sacola
+
 $sacola - mostra os marcadores dentro da sacola
+
 $reiniciar - readiciona todos os marcadores a sacola
