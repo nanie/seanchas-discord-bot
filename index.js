@@ -22,9 +22,9 @@ client.on('message', message => {
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
- //   if (command === 'ping') {
-      //  client.commands.get('ping').execute(message, args, botData[message.guild.id]);
-    //}
+    if (command === 'sacola2') {
+        client.commands.get('sacola2').execute(message, args, botData);
+    }
 
     if (command === 'sacola') {
         if (botData[message.guild.id] === undefined) {
