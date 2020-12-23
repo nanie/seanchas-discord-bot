@@ -8,6 +8,10 @@ client.commands = new Discord.Collection();
 //Find all command files under commands
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 for (const file of commandFiles) {
     //Load all commands
     const command = require(`./commands/${file}`);
@@ -37,4 +41,4 @@ client.on('message', message => {
 
 });
 
-client.login('NzkxMDc0NDQ0MjM1NjM2NzU3.X-J3fA.DvVsWXp27vuefmPaS_SPtMb_ZBg');
+client.login(process.env.DISCORD_KEY);
