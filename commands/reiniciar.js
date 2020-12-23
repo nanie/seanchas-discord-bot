@@ -1,19 +1,14 @@
 module.exports =
 {
-    name: 'sacola2',
+    name: 'reiniciar',
     description: 'Mostra conteudo da sacola',
-    execute(message, args, botData)
+    execute(message, currentBag)
     {
-        if (botData[message.guild.id] === undefined) {
-            botData[message.guild.id] = CreateBag();
-        }
-
+        currentBag = CreateBag();
         var text = 'O que tem na sacola...';
-        const currentBag = botData[message.guild.id];
         for (const seasonToken of currentBag) {
             text += seasonToken;
         }
-
         message.channel.send(text);
     }
 }

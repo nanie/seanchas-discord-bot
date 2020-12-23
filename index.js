@@ -1,15 +1,18 @@
+require('./seanchasUtils.js')();
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
 const prefix = '$';
 const botData = {};
 client.commands = new Discord.Collection();
-
+//Find all command files under commands
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
+    //Load all commands
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
+    console.log('Loading command:' + file);
 }
 
 client.once('ready', () => {
@@ -17,74 +20,21 @@ client.once('ready', () => {
 })
 
 client.on('message', message => {
+    //If the command don't start with the $ prefix, ignore
     if (!message.content.startsWith(prefix) || message.author.bot) return;
-
+    //Find command
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
-
-    if (command === 'sacola2') {
-        client.commands.get('sacola2').execute(message, args, botData);
-    }
-
-    if (command === 'sacola') {
-        if (botData[message.guild.id] === undefined) {
-            botData[message.guild.id] = CreateBag();
-        }
-
-        var text = 'O que tem na sacola...';
-        const currentBag = botData[message.guild.id];
-        for (const seasonToken of currentBag) {
-            text += seasonToken;
-        }
-
-        message.channel.send(text);
-    }
-    else if (command === 'pegar') 
-    {
-        const currentBag = botData[message.guild.id];
-        var selected = '';
-        if(currentBag.length < 4)
-        {
-            message.channel.send("Seu saquinho está vazio, reinicie com o comando $reiniciar");
-        }
-        else
-        {
-            for (j = 0; j < 4; j++) {
-                const randomIndex = Math.floor(Math.random() * currentBag.length); 
-                selected += currentBag[randomIndex];
-                currentBag.splice(randomIndex, 1);
-            }
-           
-            message.channel.send(selected);
-        }
-        
-    }
-    else if (command === 'reiniciar') 
-    {
+    //Start bag if current discord server doesn`t own one
+    if (botData[message.guild.id] === undefined) {
         botData[message.guild.id] = CreateBag();
-        var text = 'O que tem na sacola...';
-        const currentBag = botData[message.guild.id];
-        for (const seasonToken of currentBag) {
-            text += seasonToken;
-        }
-
-        message.channel.send(text);
+    }
+    //Check if command exists, if it does execute
+    if(commandFiles.includes(command + '.js'))
+    {
+        client.commands.get(command).execute(message, botData[message.guild.id]);
     }
 
 });
-
-
-function CreateBag() {
-    var bag = [];
-    const seasons = [':sunny:', ':maple_leaf:', ':snowflake:', ':sunflower:'];
-    for (i = 0; i < 4; i++) {
-        for (j = 0; j < 4; j++) {
-            bag.push(seasons[j]);
-        }
-    }
-    return bag;
-}
-
-
 
 client.login('NzkxMDc0NDQ0MjM1NjM2NzU3.X-J3fA.DvVsWXp27vuefmPaS_SPtMb_ZBg');
