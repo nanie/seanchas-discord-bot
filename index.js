@@ -1,4 +1,4 @@
-require('./seanchasUtils.js')();
+const Util = require('./seanchasUtils');
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
@@ -27,7 +27,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
     //Start bag if current discord server doesn`t own one
     if (botData[message.guild.id] === undefined) {
-        botData[message.guild.id] = CreateBag();
+        botData[message.guild.id] = Util.CreateBag();
     }
     //Check if command exists, if it does execute
     if(commandFiles.includes(command + '.js'))

@@ -1,6 +1,6 @@
 module.exports =
 {
-    name: 'help',
+    name: 'ajuda',
     description: 'Mostra conteudo da sacola',
     execute(message, currentBag)
     {

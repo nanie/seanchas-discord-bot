@@ -4,7 +4,8 @@ module.exports =
     description: 'Mostra conteudo da sacola',
     execute(message, currentBag)
     {
-        currentBag = CreateBag();
+        const Util = require('../seanchasUtils');
+        currentBag = Util.CreateBag();
         var text = 'O que tem na sacola...';
         for (const seasonToken of currentBag) {
             text += seasonToken;

@@ -1,4 +1,5 @@
-module.exports = function() { 
+
+function CreateBag() {
     var bag = [];
     const seasons = [':sunny:', ':maple_leaf:', ':snowflake:', ':sunflower:'];
     for (i = 0; i < 4; i++) {
@@ -8,3 +9,5 @@ module.exports = function() {
     }
     return bag;
 }
+
+module.exports = { CreateBag };
