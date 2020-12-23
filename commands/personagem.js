@@ -12,7 +12,7 @@ module.exports =
 
         for (j = 0; j < 3; j++) {
             const randomIndex = Math.floor(Math.random() * seasons.length); 
-            selected += attributes[j] + ': ' + seasons[randomIndex] + ' - ' + descriptions[randomIndex] + '\n';
+            text += attributes[j] + ': ' + seasons[randomIndex] + ' - ' + descriptions[randomIndex] + '\n';
         }
        
         
