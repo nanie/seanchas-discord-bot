@@ -7,7 +7,7 @@ Sobre o bot do discord:
 Atualmente está disponível no link https://discord.com/api/oauth2/authorize?client_id=791074444235636757&permissions=0&scope=bot
 e hospedado em uma conta gratuita no Heroku o que pode fazer com que sua disponibilidade seja prejudicada.
 
-Caso queira ajudar no desenvolvimento entre em contato :) esse é um bot criado pela comunidade que forçados ao mundo digital pela pandemia queria jogar Seanchas.
+Caso queira ajudar no desenvolvimento entre em contato :) esse é um bot criado pela comunidade que forçados ao mundo digital pela pandemia queriam jogar Seanchas.
 
 Caso queira fazer um fork e criar algo totalmente seu fique a vontade também!
 
