@@ -11,5 +11,7 @@ module.exports =
             text += seasonToken;
         }
         message.channel.send(text);
+        
+        //
     }
 }
